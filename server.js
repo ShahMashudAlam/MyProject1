@@ -4,8 +4,7 @@ if (process.env.NODE_ENV !== 'production'){
     console.log('Environment variable TEST_VAR:', process.env.TEST_VAR);
 }
 
-const express = require('express')
-const app = express()
+
 const expressLayouts = require('express-ejs-layouts')
 
 const indexRouter = require('./routes/index')
@@ -16,7 +15,57 @@ app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
 
-const mongoose = require('mongoose')
+
+
+
+
+
+const mongoose = require('mongoose');
+const express = require('express');
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  throw new Error('MONGODB_URI environment variable is not set');
+}
+
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('Connected to MongoDB');
+})
+.catch((error) => {
+  console.error('Error connecting to MongoDB:', error.message);
+});
+
+app.get('/', (req, res) => {
+  res.send('Hello Vercel!');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+module.exports = app;
+
+
+
+
+
+
+
+
+//const express = require('express')
+//const app = express() 
+
+
+//upcode in here line 7-17
+
+/* const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser:true})
 const db = mongoose.connection
@@ -27,3 +76,4 @@ app.use('/', indexRouter)
 
 app.listen(process.env.PORT || 3000)
 
+*/
