@@ -1,8 +1,9 @@
 {
-  "name": "GitHub",
+  "name": "my_project",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
+    "dev":"node server.js",
     "start": "node server.js",
     "devStart": "nodemon server.js"
   },
