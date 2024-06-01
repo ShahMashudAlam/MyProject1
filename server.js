@@ -1,4 +1,4 @@
-
+/*
 
 if (process.env.NODE_ENV !== 'production'){
     require('dotenv').config()
@@ -38,10 +38,10 @@ app.use('/', indexRouter)
 
 app.listen(process.env.PORT || 3000)
 
+*/
 
 
 
-/*
 
 require('dotenv').config();
 
@@ -76,4 +76,3 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
-*/
