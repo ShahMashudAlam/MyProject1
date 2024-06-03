@@ -5,19 +5,9 @@ if (process.env.NODE_ENV !== 'production'){
 
     console.log('Environment variable TEST_VAR:', process.env.TEST_VAR);
 }
-
-
-
-
-
-
-
 const express = require('express')
 const app = express() 
-
-
 const expressLayouts = require('express-ejs-layouts')
-
 const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/authors')
 
@@ -26,8 +16,6 @@ app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
-
-
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser:true})
@@ -40,10 +28,10 @@ app.use('/authors', authorRouter)
 
 app.listen(process.env.PORT || 3000)
 
+
+
 /*
-
-
-
+Option 2:
 
 require('dotenv').config();
 
